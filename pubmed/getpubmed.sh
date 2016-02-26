@@ -2,7 +2,7 @@
 rm -f newest.txt
 wget -O newest.txt "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=\%222015/09/01\%22[CRDAT]%20:%20\%223000\%22[CRDAT]"
 maxpmid=`gawk '/<Id>/{id=substr($1,5,8);print int(id/500)*500;exit;}' newest.txt`
-beginpmid=`tail -1 pmid.txt`
+beginpmid=`gawk 'BEGIN{id=20000000;}{if(NF>0){id=$1}}END{print id}' pmid.txt`
 echo $maxpmid >> pmid.txt
 begin=`echo $beginpmid +1|bc`;
 step=500;
