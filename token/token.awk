@@ -6,7 +6,7 @@ while (getline < "abb.txt"){
 {
 gsub("&gt;",">");
 gsub("&lt;","<");
-gsub("amp;","");
+gsub("&amp;","\&");
 gsub(/[^a-zA-Z0-9\- ]/,"_&_");
 gsub("__","_")
 gsub("_ "," ")
